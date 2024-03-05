@@ -11,8 +11,8 @@ module.exports = (uniqueKeyConditions) => {
         const uniqueColumns = columns.join(', ');
 
         assert(`assert_unique_key_${tableName}`)
-            .database(dataform.projectConfig.vars.project + dataform.projectConfig.vars.env)
-            .schema(`d_${dataform.projectConfig.vars.use_case}_assertions_eu_${dataform.projectConfig.vars.env}`)
+            // .database(dataform.projectConfig.vars.project + dataform.projectConfig.vars.env)
+            // .schema(`d_${dataform.projectConfig.vars.use_case}_assertions_eu_${dataform.projectConfig.vars.env}`)
             .description(`Check that values in columns (${uniqueColumns}) in ${tableName} form a unique key`)
             .tags("assertions")
             .query(ctx => `SELECT ${uniqueColumns}
