@@ -8,7 +8,10 @@ module.exports = ({
     
 }) => {
 
-    row_condition_assertions(row_condition_assertions_params);
+    const rowConditionAssertionsResult = row_condition_assertions(row_condition_assertions_params);
     unique_key_assertions(unique_key_assertions_params);
 
+     return {
+        rowConditionAssertions: rowConditionAssertionsResult
+    };
 }

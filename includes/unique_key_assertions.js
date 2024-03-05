@@ -19,6 +19,7 @@ module.exports = (uniqueKeyConditions) => {
                        FROM ${ctx.ref(tableName)}
                        GROUP BY ${uniqueColumns}
                        HAVING COUNT(*) > 1`);
+        
     };
 
     // Loop through uniqueKeyConditions to create unique key check assertions.
@@ -28,4 +29,5 @@ module.exports = (uniqueKeyConditions) => {
         createUniqueKeyAssertion(tableName, columns);
     }
     // Do not modify this loop unless you have specific requirements.
+
 }

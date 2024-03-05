@@ -1,4 +1,6 @@
 module.exports = (rowConditions) => {
+    const assertions = [];
+
     // Do not modify this function unless you have specific requirements.
     const createRowConditionAssertion = (tableName, conditionName, conditionQuery) => {
         const assertion = assert(`assert_${conditionName}_${tableName}`)
@@ -13,6 +15,8 @@ module.exports = (rowConditions) => {
         //   if (dataform.projectConfig.vars.env !== "pd") {
         //     assertion.disabled();
         //   }
+
+        assertions.push(assertion);
 
     };
 
