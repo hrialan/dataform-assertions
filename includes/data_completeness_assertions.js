@@ -14,7 +14,7 @@ const createDataCompletenessAssertion = (globalParams, tableName, columnConditio
       .description(`Check data completeness for ${tableName}.${columnName}, allowed percentage of null values: ${allowedPercentageNull}`)
       .tags("assert-data-completeness")
       .query(ctx => `SELECT COUNT(*) AS total_rows,
-                        SUM(CASE WHEN ${ctx.ref(columnName)} IS NULL THEN 1 ELSE 0 END) AS null_count
+                        SUM(CASE WHEN ${columnName} IS NULL THEN 1 ELSE 0 END) AS null_count
                         FROM ${ctx.ref(tableName)}
                         HAVING SAFE_DIVIDE(null_count, total_rows) > ${allowedPercentageNull / 100} AND null_count > 0 AND total_rows > 0`);
 
