@@ -10,6 +10,7 @@ const createUniqueKeyAssertion = (globalParams, tableName, columns) => {
     .database(globalParams.database)
     .schema(globalParams.schema)
     .description(`Check that values in columns (${uniqueColumns}) in ${tableName} form a unique key`)
+    .tags("assert-unique-key")
     .query(ctx => `SELECT ${uniqueColumns}
                        FROM ${ctx.ref(tableName)}
                        GROUP BY ${uniqueColumns}

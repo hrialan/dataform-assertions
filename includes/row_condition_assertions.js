@@ -8,6 +8,7 @@ const createRowConditionAssertion = (globalParams, tableName, conditionName, con
     .database(globalParams.database)
     .schema(globalParams.schema)
     .description(`Assert that rows in ${tableName} meet ${conditionName}`)
+    .tags("assert-row-condition")
     .query(ctx => `SELECT "Condition not met: ${conditionQuery}, Table: ${ctx.ref(tableName)}" AS assertion_description
                        FROM ${ctx.ref(tableName)}
                        WHERE NOT (${conditionQuery})`);

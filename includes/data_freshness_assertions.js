@@ -5,6 +5,7 @@ const createDataFreshnessAssertion = (globalParams, tableName, delayCondition, t
     .database(globalParams.database)
     .schema(globalParams.schema)
     .description(`Assert that data in ${tableName} is fresh with a delay less than ${delayCondition} ${timeUnit}`)
+    .tags("assert-data-freshness")
     .query(ctx => `
                 WITH
                     freshness AS (

@@ -26,7 +26,8 @@ const assertions = dataform_assertions({
   },
   dataCompletenessConditions: {
     "table": {
-      "updated_date": 10
+      "updated_date": 10,
+      "id": 20
     }
   }
 });
