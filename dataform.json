@@ -3,5 +3,8 @@
     "defaultSchema": "dataform",
     "assertionSchema": "dataform_assertions",
     "defaultDatabase": "dataform-corp",
-    "defaultLocation": "EU"
+    "defaultLocation": "EU",
+    "vars":{
+        "env":"dv"
+    }
 }
