@@ -1,0 +1,7 @@
+config {
+    type: "table"
+}
+
+SELECT
+  1 AS id
+
