@@ -25,7 +25,7 @@ module.exports = (globalAssertionsParams, uniqueKeyConditions) => {
         if (globalAssertionsParams.disabledInEnvs && globalAssertionsParams.disabledInEnvs.includes(dataform.projectConfig.vars.env)) {
             assertion.disabled();
         }
-        
+
         assertions.push(assertion);
     };
 
