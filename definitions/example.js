@@ -23,5 +23,10 @@ const assertions = dataform_assertions({
       "timeUnit": "DAY",
       "delayCondition": 1,
     }
+  },
+  dataCompletenessConditions: {
+    "table": {
+      "updated_date": 10
+    }
   }
 });
