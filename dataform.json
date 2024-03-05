@@ -2,7 +2,7 @@
     "warehouse": "bigquery",
     "defaultSchema": "dataform",
     "assertionSchema": "dataform_assertions",
-    "defaultDatabase": "dataform-corp",
+    "defaultDatabase": "sandbox-hrialan",
     "defaultLocation": "EU",
     "vars":{
         "env":"dv"
