@@ -1,12 +1,12 @@
 module.exports = (globalAssertionsParams, freshnessConditions) => {
-    const assertions = [];
+  const assertions = [];
 
-    const createDataFreshnessAssertion = (tableName, delayCondition, timeUnit, dateColumn) => {
-        const assertion = assert(`assert_freshness_${tableName}`)
-            .database(globalAssertionsParams.database)
-            .schema(globalAssertionsParams.schema)
-            .description(`Assert that data in ${tableName} is fresh with a delay less than ${delayCondition} ${timeUnit}`)
-            .query(ctx => `
+  const createDataFreshnessAssertion = (tableName, delayCondition, timeUnit, dateColumn) => {
+    const assertion = assert(`assert_freshness_${tableName}`)
+      .database(globalAssertionsParams.database)
+      .schema(globalAssertionsParams.schema)
+      .description(`Assert that data in ${tableName} is fresh with a delay less than ${delayCondition} ${timeUnit}`)
+      .query(ctx => `
                 WITH
                     freshness AS (
                         SELECT
@@ -22,28 +22,28 @@ module.exports = (globalAssertionsParams, freshnessConditions) => {
                     delay > ${delayCondition}
             `);
 
-        if (globalAssertionsParams.tags) {
-            globalAssertionsParams.tags.forEach((tag) => {
-                assertion.tags(tag);
-            });
-        }
-
-        if (globalAssertionsParams.disabledInEnvs && globalAssertionsParams.disabledInEnvs.includes(dataform.projectConfig.vars.env)) {
-            assertion.disabled();
-        }
-
-        assertions.push(assertion);
-    };
-
-    // Loop through freshnessConditions to create assertions.
-    for (let tableName in freshnessConditions) {
-        const {
-            delayCondition,
-            timeUnit,
-            dateColumn
-        } = freshnessConditions[tableName];
-        createDataFreshnessAssertion(tableName, delayCondition, timeUnit, dateColumn);
+    if (globalAssertionsParams.tags) {
+      globalAssertionsParams.tags.forEach((tag) => {
+        assertion.tags(tag);
+      });
     }
 
-    return assertions;
+    if (globalAssertionsParams.disabledInEnvs && globalAssertionsParams.disabledInEnvs.includes(dataform.projectConfig.vars.env)) {
+      assertion.disabled();
+    }
+
+    assertions.push(assertion);
+  };
+
+  // Loop through freshnessConditions to create assertions.
+  for (let tableName in freshnessConditions) {
+    const {
+      delayCondition,
+      timeUnit,
+      dateColumn
+    } = freshnessConditions[tableName];
+    createDataFreshnessAssertion(tableName, delayCondition, timeUnit, dateColumn);
+  }
+
+  return assertions;
 };
