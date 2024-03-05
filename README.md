@@ -1,3 +1,3 @@
-# dataform-package-base
+# Dataform assertions
 
-Use this as the base when creating a new package.
+This Dataform package contains assertions for testing the data in your warehouse.
