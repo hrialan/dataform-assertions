@@ -19,8 +19,9 @@ const assertions = dataform_assertions({
     },
     dataFreshnessConditions: {
         "table": {
-            "delayCondition": 7,
-            "timeUnit": "DAY"
+            "dateColumn": "updated_date",
+            "timeUnit": "DAY",
+            "delayCondition": 1,
         }
     }
 });

@@ -21,6 +21,7 @@ module.exports = ({
 
     return {
         rowConditionAssertions: rowConditionAssertionsResult,
-        uniqueKeyAssertions: uniqueKeyAssertionsResult
+        uniqueKeyAssertions: uniqueKeyAssertionsResult,
+        dataFreshnessAssertions: dataFreshnessAssertionsResult
     };
 }

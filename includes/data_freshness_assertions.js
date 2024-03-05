@@ -1,7 +1,7 @@
 module.exports = (globalAssertionsParams, freshnessConditions) => {
     const assertions = [];
 
-    const createDataFreshnessAssertion = (tableName, delayCondition, timeUnit) => {
+    const createDataFreshnessAssertion = (tableName, delayCondition, timeUnit, dateColumn) => {
         const assertion = assert(`assert_freshness_${tableName}`)
             .database(globalAssertionsParams.database)
             .schema(globalAssertionsParams.schema)
@@ -10,7 +10,7 @@ module.exports = (globalAssertionsParams, freshnessConditions) => {
                 WITH
                     freshness AS (
                         SELECT
-                            DATE_DIFF(CURRENT_DATE(), MAX(dummy_ingestion_date), ${timeUnit}) AS delay
+                            DATE_DIFF(CURRENT_DATE(), MAX(${dateColumn}), ${timeUnit}) AS delay
                         FROM
                             ${ctx.ref(tableName)}
                     )
@@ -37,8 +37,12 @@ module.exports = (globalAssertionsParams, freshnessConditions) => {
 
     // Loop through freshnessConditions to create assertions.
     for (let tableName in freshnessConditions) {
-            const { delayCondition, timeUnit } = freshnessConditions[tableName];
-            createDataFreshnessAssertion(tableName, delayCondition, timeUnit);
+        const {
+            delayCondition,
+            timeUnit,
+            dateColumn
+        } = freshnessConditions[tableName];
+        createDataFreshnessAssertion(tableName, delayCondition, timeUnit, dateColumn);
     }
 
     return assertions;
