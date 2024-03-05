@@ -16,5 +16,11 @@ const assertions = dataform_assertions({
     },
     uniqueKeyConditions: {
         "table": ["id"]
+    },
+    dataFreshnessConditions: {
+        "table": {
+            "delayCondition": 7,
+            "timeUnit": "DAY"
+        }
     }
 });

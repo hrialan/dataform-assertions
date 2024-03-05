@@ -1,6 +1,6 @@
 const row_condition_assertions = require("./includes/row_condition_assertions");
 const unique_key_assertions = require("./includes/unique_key_assertions");
-
+const data_freshness_assertions = require("./includes/data_freshness_assertions");
 
 module.exports = ({
     globalAssertionsParams = {
@@ -11,11 +11,13 @@ module.exports = ({
         disabledInEnvs: []
     },
     rowConditions = {},
-    uniqueKeyConditions = {}
+    uniqueKeyConditions = {},
+    dataFreshnessConditions = {}
 }) => {
 
     const rowConditionAssertionsResult = row_condition_assertions(globalAssertionsParams, rowConditions);
     const uniqueKeyAssertionsResult = unique_key_assertions(globalAssertionsParams, uniqueKeyConditions);
+    const dataFreshnessAssertionsResult = data_freshness_assertions(globalAssertionsParams, dataFreshnessConditions);
 
     return {
         rowConditionAssertions: rowConditionAssertionsResult,
