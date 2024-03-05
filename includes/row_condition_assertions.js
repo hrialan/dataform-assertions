@@ -1,5 +1,20 @@
-// Define row conditions for specific tables.
-// Format: rowConditions = { tableName : { conditionName : conditionQuery } }
+/**
+ * row_condition_assertions.js
+ * 
+ * This file contains a function to create row condition assertions for specific tables in a database.
+ * The assertions are used to check if the rows in each specified table meet a certain condition.
+ * The conditions for row checks are defined in an object format: 
+ * { tableName: { conditionName: conditionQuery, ... }, ... }
+ * 
+ * The function `createRowConditionAssertion` takes in global parameters, a table name, a condition name, and a condition query to create these assertions.
+ */
+
+/**
+ * @param {Object} globalParams - See index.js for details.
+ * @param {string} tableName - The name of the table to check for row conditions.
+ * @param {string} conditionName - The name of the condition to check.
+ * @param {string} conditionQuery - The SQL query that defines the condition to check.
+ */
 
 const assertions = [];
 

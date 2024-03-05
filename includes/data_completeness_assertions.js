@@ -1,5 +1,19 @@
-// Define data completeness conditions for specific tables and columns.
-// Format: dataCompletenessConditions = { tableName: { columnName: allowedPercentageNull, ... }, ... }
+/**
+ * data_completeness_assertions.js
+ * 
+ * This file contains a function to create data completeness assertions for specific tables and columns in a database.
+ * The assertions are used to check if the percentage of null values in each specified column exceeds an allowed limit.
+ * The conditions for data completeness checks are defined in an object format: 
+ * { tableName: { columnName: allowedPercentageNull, ... }, ... }
+ * 
+ * The function `createDataCompletenessAssertion` takes in global parameters, a table name, and column conditions to create these assertions.
+ */
+
+/**
+ * @param {Object} globalParams - See index.js for details.
+ * @param {string} tableName - The name of the table to check for data completeness.
+ * @param {Object} columnConditions - An object mapping column names to their allowed percentage of null values. If a value is an object, it should have an `allowedPercentageNull` property.
+ */
 
 const assertions = [];
 

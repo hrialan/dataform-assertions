@@ -1,3 +1,20 @@
+/**
+ * data_freshness_assertions.js
+ * 
+ * This file contains a function to create data freshness assertions for specific tables in a database.
+ * The assertions are used to check if the data in each specified table is fresh, based on a specified delay condition and time unit.
+ * 
+ * The function `createDataFreshnessAssertion` takes in global parameters, a table name, a delay condition, a time unit, and a date column to create these assertions.
+ */
+
+/**
+ * @param {Object} globalParams - See index.js for details.
+ * @param {string} tableName - The name of the table to check for data freshness.
+ * @param {number} delayCondition - The maximum allowed delay (in units specified by `timeUnit`) for the data to be considered fresh.
+ * @param {string} timeUnit - The unit of time to use for the delay condition. This should be a string that is valid in a SQL `DATE_DIFF` function, such as 'DAY', 'HOUR', etc.
+ * @param {string} dateColumn - The name of the date column to check for data freshness.
+ */
+
 const assertions = [];
 
 const createDataFreshnessAssertion = (globalParams, tableName, delayCondition, timeUnit, dateColumn) => {

@@ -1,22 +1,22 @@
 config {
-    type: "table"
+  type: "table"
 }
 
 SELECT
   NULL AS id,
-  DATE(1970,1,1) AS updated_date
+  DATE(1970, 1, 1) AS updated_date
 UNION ALL
 SELECT
   2 AS id,
-  DATE(1970,1,1) AS updated_date
+  DATE(1970, 1, 1) AS updated_date
 UNION ALL
 SELECT
   NULL AS id,
-  DATE(1970,1,1) AS updated_date
+  DATE(1970, 1, 1) AS updated_date
 UNION ALL
 SELECT
   NULL AS id,
-  DATE(1970,1,1) AS updated_date
+  DATE(1970, 1, 1) AS updated_date
 UNION ALL
 SELECT
   3 AS id,
@@ -24,4 +24,4 @@ SELECT
 UNION ALL
 SELECT
   NULL AS id,
-  DATE(1970,1,1) AS updated_date
+  DATE(1970, 1, 1) AS updated_date

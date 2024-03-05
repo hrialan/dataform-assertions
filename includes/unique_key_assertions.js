@@ -1,5 +1,19 @@
-// Define unique key conditions for specific tables.
-// Format: uniqueKeyConditions = { tableName : [column1, column2, ...] }
+/**
+ * unique_key_assertions.js
+ * 
+ * This file contains a function to create unique key assertions for specific tables in a database.
+ * The assertions are used to check if the combination of values in specified columns forms a unique key for each row in the table.
+ * The conditions for unique key checks are defined in an object format: 
+ * { tableName: [column1, column2, ...], ... }
+ * 
+ * The function `createUniqueKeyAssertion` takes in global parameters, a table name, and an array of column names to create these assertions.
+ */
+
+/**
+ * @param {Object} globalParams - See index.js for details.
+ * @param {string} tableName - The name of the table to check for unique keys.
+ * @param {Array} columns - An array of column names that should form a unique key.
+ */
 
 const assertions = [];
 
