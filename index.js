@@ -1,16 +1,9 @@
 /**
  * index.js
  * 
- * This file is the entry point for creating various types of assertions for database tables.
- * It imports and uses functions from other modules to create row condition assertions, unique key assertions, data freshness assertions, and data completeness assertions.
+ * This file is the entry point for creating various types of assertions in Dataform.
+ * It imports and uses functions from other modules to create different types of assertions.
  * The conditions for each type of assertion are passed in as parameters in an object format.
- * 
- * The function exported by this module takes in an object with the following properties:
- * - `globalAssertionsParams`: Global parameters for the assertions.
- * - `rowConditions`: Conditions for row condition assertions.
- * - `uniqueKeyConditions`: Conditions for unique key assertions.
- * - `dataFreshnessConditions`: Conditions for data freshness assertions.
- * - `dataCompletenessConditions`: Conditions for data completeness assertions.
  */
 
 /**
