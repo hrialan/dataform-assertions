@@ -1,6 +1,6 @@
-const dataform_assertions = require("../index");
+const commonAssertions = require("../index");
 
-const assertions = dataform_assertions({
+const commonAssertionsResult = commonAssertions({
   globalAssertionsParams: {
     "database": "sandbox-hrialan",
     "schema": "assertions_" + dataform.projectConfig.vars.env,
@@ -44,3 +44,28 @@ const assertions = dataform_assertions({
     }
   }
 });
+
+// AUDIT 
+
+let selectClauses = [];
+
+for (const key in commonAssertionsResult) {
+    if (commonAssertionsResult.hasOwnProperty(key)) {
+        const commonAssertionsResultForKey = commonAssertionsResult[key];
+        if (commonAssertionsResultForKey.length > 0) {
+            const selectClause = commonAssertionsResultForKey.map(assertion => {
+                return `SELECT "${assertion.proto.target.name}" AS assertion_name, '${key}' AS key_name`;
+            }).join("\n UNION ALL \n");
+
+            selectClauses.push(selectClause);
+        }
+    }
+}
+
+const sqlQuery = selectClauses.join("\n UNION ALL \n");
+
+publish("audit_assertions", {
+    type: "table"
+}).query(
+    (ctx) => sqlQuery
+);
