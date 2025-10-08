@@ -1,0 +1,14 @@
+{
+    "name": "@hrialan/dataform-assertions",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hrialan/dataform-assertions.git"
+    },
+    "dependencies": {
+        "@dataform/core": "^3.0.0"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    }
+}
